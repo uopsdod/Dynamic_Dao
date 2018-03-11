@@ -4,13 +4,13 @@ import org.sql2o.Sql2o;
 
 import com.util.Util;
 
-public class Sql2OService {
+public class Service_Sql2O {
 	
 	// Lazy initialization - holder class idiom for static fields
 	// This idiom is almost magical. There's synchronization going on, but it's invisible. The Java Runtime Environment does it for you, behind the scenes. And many VMs actually patch the code to eliminate the synchronization once it's no longer necessary, so this idiom is extremely fast.
 	// ref: http://www.oracle.com/technetwork/articles/javase/bloch-effective-08-qa-140880.html
 	// 		search for 'Best Practices for Lazy Initialization'
-	private Sql2OService() {}
+	private Service_Sql2O() {}
 	
 	private static class Sql2OHolder {
 	    static final Sql2o SQL2O;

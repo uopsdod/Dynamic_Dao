@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dao.dynamic.ConProvider;
 
 public class ConProvider_JDBC extends ConProvider{
-    private final JdbcTemplate jdbcTemplate = JDBCService.getJDBCTemplte();
+    private final JdbcTemplate jdbcTemplate = Service_JDBC.getJDBCTemplte();
     @Autowired
     public ConProvider_JDBC() {}
 

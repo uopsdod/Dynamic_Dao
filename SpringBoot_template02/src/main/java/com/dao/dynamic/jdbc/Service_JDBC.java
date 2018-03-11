@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import org.sql2o.Sql2o;
 
 @Component
-public class JDBCService {
+public class Service_JDBC {
     private static JdbcTemplate jdbcTemplate;
     @Autowired
-    public JDBCService(JdbcTemplate jdbcTemplate) {
-    	JDBCService.jdbcTemplate = jdbcTemplate;
+    public Service_JDBC(JdbcTemplate jdbcTemplate) {
+    	Service_JDBC.jdbcTemplate = jdbcTemplate;
     }	
 	
-	public static JdbcTemplate getJDBCTemplte() { return JDBCService.jdbcTemplate; }	
+	public static JdbcTemplate getJDBCTemplte() { return Service_JDBC.jdbcTemplate; }	
 }
