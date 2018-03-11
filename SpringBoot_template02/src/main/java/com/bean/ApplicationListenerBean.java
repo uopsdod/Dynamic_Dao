@@ -18,10 +18,6 @@ import com.util.Util;
 
 public class ApplicationListenerBean implements ApplicationListener {
 	
-	@Autowired
-	Assembler_JDBC myAssembler_JDBC;
-	
-	
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         if (event instanceof ContextRefreshedEvent) {
@@ -46,7 +42,7 @@ public class ApplicationListenerBean implements ApplicationListener {
     		tblSystemMonitor tblSystemMonitor = new tblSystemMonitor();
     		tblSystemMonitor.setStatus("23");
     		
-    		Assembler_JDBC myJPF_JDBCDao = myAssembler_JDBC;
+    		Assembler_JDBC myJPF_JDBCDao = new Assembler_JDBC();
     		// jdbd - findAll 
     		SqlProcessor jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.R);
     		Object con = myJPF_JDBCDao.getCon();

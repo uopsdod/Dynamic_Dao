@@ -14,14 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 //THIRD PARTY
 import com.dao.dynamic.ConProvider;
 
-@Transactional
-@Repository
 public class ConProvider_JDBC extends ConProvider{
-    private final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate = JDBCService.getJDBCTemplte();
     @Autowired
-    public ConProvider_JDBC(JdbcTemplate jdbcTemplate) {
-	  this.jdbcTemplate = jdbcTemplate;
-    }
+    public ConProvider_JDBC() {}
 
 //	private Sql2o sql2oForAll = Sql2OService.getSQL2OInstance();
 	

@@ -2,15 +2,14 @@ package com.dao.dynamic.jdbc;
 
 
 // JAVA
-import java.util.List;
 
+// SELF
+import com.dao.dynamic.Assembler;
+
+// THIRD PARTY
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-
-import com.dao.dynamic.Assembler;
-
-// SELF
 
 /**
  * ( 這邊就是客戶端了，各自去用 ，已非開發設計者的責任範圍)
@@ -18,7 +17,6 @@ import com.dao.dynamic.Assembler;
  * 
  * @author sam
  */
-@Component
 public class Assembler_JDBC extends Assembler{
 //	Info360DaoBase info360Dao = null;
 	
@@ -26,9 +24,8 @@ public class Assembler_JDBC extends Assembler{
 		C,R,U,D // 客戶端自行新增 
 	}
 	
-    @Autowired
-    public Assembler_JDBC(JdbcTemplate jdbcTemplate) {
-    	super(new ConProvider_JDBC(jdbcTemplate));
+    public Assembler_JDBC() {
+    	super(new ConProvider_JDBC());
 		this.load();
     }
 	
