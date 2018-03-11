@@ -1,7 +1,9 @@
 package com.dao.dynamic.jdbc;
 
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,22 +56,28 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 //			result = query.executeAndFetch(aObj.getClass());
 				ResultSet rs = query.executeQuery();
 				ResultSetMetaData rsmd = rs.getMetaData();
-				List<tblSystemMonitor> tblSystemMonitor_list = new ArrayList<>();
+				List<T> resultList = new ArrayList<>();
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 					String name = rsmd.getColumnName(i);
 					System.out.println("rs_name: " + name);
 				}
 				System.out.println("rs.getFetchSize(): " + rs.getFetchSize());
 				try {	
+					// 拿取原物件class
+					Constructor<T> ctor = (Constructor<T>) aObj.getClass().getConstructor();
+			        
 					// 開始拿結果
 					while(rs.next()) {
-						tblSystemMonitor myTblSystemMonitor = new tblSystemMonitor();
+//						tblSystemMonitor myTblSystemMonitor = new tblSystemMonitor();
+						// 建立物件
+						T instance = ctor.newInstance();
 						// 開始看總共有哪些欄位要取
 						for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 							String name = rsmd.getColumnName(i);
 							System.out.println("rs_name: " + name);
 							// 找對應的欄位去塞值
-							Class myClass = myTblSystemMonitor.getClass();
+//							Class myClass = myTblSystemMonitor.getClass();
+							Class myClass = instance.getClass();
 //							ParameterizedTypeImpl type = new ParameterizedTypeImpl(myClass, new Class[]{myClass});
 //							System.out.println("type_name: " + type.getOwnerType().getTypeName()); // X 
 //							System.out.println("type_name: " + type.getRawType().getTypeName()); // O 
@@ -79,42 +87,24 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 							if (Integer.class.isAssignableFrom(f.getType())) {
 								System.out.println("Integer type");
 								Integer val = rs.getInt("status");
-								f.set(myTblSystemMonitor, val);
+								f.set(instance, val);
 							}else if (String.class.isAssignableFrom(f.getType())) {
 								System.out.println("String type");
 								String val = rs.getString("status");
-								f.set(myTblSystemMonitor, val);
+								f.set(instance, val);
 							} // 請在持續往下
 							System.out.println("end this round ****************");
-							
-//							Field[] fields = tblSystemMonitor.getClass().getDeclaredFields();
-//							/** 動態生成WHERE語句(注意: 僅對String型態有效) **/
-//							for (Field f : fields){
-//								f.setAccessible(true);
-//								if (name.equalsIgnoreCase(f.getName())) {
-//									System.out.println("f.getType(): " + f.getType().getSimpleName());
-//									if (Integer.class.isAssignableFrom(f.getType())) {
-//										System.out.println("Integer type");
-//										Integer val = rs.getInt("status");
-//										f.set(tblSystemMonitor, val);
-//									}else if (String.class.isAssignableFrom(f.getType())) {
-//										System.out.println("String type");
-//										String val = rs.getString("status");
-//										f.set(tblSystemMonitor, val);
-//									} // 請在持續往下家
-//								}
-//							} // end of for 			
 						} // end of for
 						
 						// 最後放入list
-						tblSystemMonitor_list.add(myTblSystemMonitor);
+						resultList.add(instance);
 					} // end of while
-				} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+				} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException | InstantiationException | InvocationTargetException | NoSuchMethodException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				System.out.println("tblSystemMonitor_list.size(): " + tblSystemMonitor_list.size());
-				result = tblSystemMonitor_list;
+				System.out.println("tblSystemMonitor_list.size(): " + resultList.size());
+				result = resultList;
 				break;
 //		case C:
 //			result = query.executeUpdate().getKey(); // pk值
