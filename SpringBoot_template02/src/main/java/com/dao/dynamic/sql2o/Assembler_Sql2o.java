@@ -22,8 +22,7 @@ public class Assembler_Sql2o extends Assembler{
 	}
 	
 	public Assembler_Sql2o() {
-//		super(new JPF_Sql2oBase(), new ConProvider_Sql2o());
-		super(new ConProvider_Sql2o());
+		super();
 		this.load();
 	}
 

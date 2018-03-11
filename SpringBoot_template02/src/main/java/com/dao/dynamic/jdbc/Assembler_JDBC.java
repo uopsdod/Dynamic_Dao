@@ -22,7 +22,7 @@ public class Assembler_JDBC extends Assembler{
 	}
 	
     public Assembler_JDBC() {
-    	super(new ConProvider_JDBC());
+    	super();
 		this.register();
     }
 	

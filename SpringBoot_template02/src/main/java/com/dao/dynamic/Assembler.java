@@ -17,9 +17,7 @@ public class Assembler {
 	
 //	private static Sql2o sql2oForAll = Sql2OService.getSQL2OInstance();
 	
-	public Assembler() {}
-	
-	public Assembler(ConProvider conProvider) {
+	public Assembler() {
 		super();
 //		this.jpf = javaPersistenFramwork;
 //		this.conProvider = conProvider;
