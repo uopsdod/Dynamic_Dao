@@ -56,6 +56,14 @@ public class ApplicationListenerBean implements ApplicationListener {
     		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_insert: " + result);
     		
+    		// jdbc - update
+    		tblSystemMonitor.setDbid(Integer.parseInt(result.toString()));
+    		tblSystemMonitor.setName("XXXX");
+    		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.U);
+    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_update: " + result);
+    		
+    		
     		
      		
         	Util.getConsoleLogger().info("ContextRefreshedEvent end ###################");

@@ -113,14 +113,13 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 //			  oid.setId(newId);
 			}
 			break;
-//		case U:
-//		case D:
-//			result = query.executeUpdate().getResult(); // 更新比數
-//			break;
-			default:
-				break;
-				
-			}
+		case U:
+		case D:
+			result = query.executeUpdate(); // 更新比數
+			break;
+		default:
+			break;
+		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} // 關鍵
