@@ -47,32 +47,32 @@ public class ApplicationListenerBean implements ApplicationListener {
     		// jdbc - findAll 
     		SqlProcessor jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.R);
     		Object con = myJPF_JDBCDao.getCon();
-    		List<tblSystemMonitor> resultAsList = myJPF_JDBCDao.getResultAsList(con, tblSystemMonitor, jpf);
+    		List<tblSystemMonitor> resultAsList = jpf.getResultAsList(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_findAll: " + resultAsList);
    		
     		// jdbc - insert
     		tblSystemMonitor.setStatus("25");
     		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.C);
-    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		result = jpf.getResult(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_insert: " + result);
     		
     		// jdbc - delete
     		tblSystemMonitor.setDbid(Integer.parseInt(result.toString()));
     		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.D);
-    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		result = jpf.getResult(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_delete: " + result);
     		
     		// jdbc - insert
     		tblSystemMonitor.setStatus("25");
     		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.C);
-    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		result = jpf.getResult(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_insert: " + result);
     		
     		// jdbc - update
     		tblSystemMonitor.setDbid(Integer.parseInt(result.toString()));
     		tblSystemMonitor.setName("XXXX");
     		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.U);
-    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		result = jpf.getResult(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_update: " + result);
     		
     		

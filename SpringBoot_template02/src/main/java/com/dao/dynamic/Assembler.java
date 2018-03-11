@@ -47,14 +47,6 @@ public class Assembler {
 //		return result;
 //	}
 	
-	public <T> Object getResult(Object aCon, T aObj, SqlProcessor aJPF){
-		return aJPF.execute(aCon, aObj);
-	}
-	
-	public <T> List<T> getResultAsList(Object aCon, T aObj, SqlProcessor aJPF){
-//		System.out.println("aJPF.getActionType(): " + aJPF.getActionType().name());
-		return (List<T>)aJPF.execute(aCon, aObj);
-	}
 
 	public Map<Object, SqlProcessor> getSqlProcessor_map() {
 		return SqlProcessor_map;

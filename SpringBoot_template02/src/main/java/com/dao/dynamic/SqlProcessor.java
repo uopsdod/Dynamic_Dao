@@ -1,6 +1,7 @@
 package com.dao.dynamic;
 
 
+import java.util.List;
 // JAVA
 import java.util.Map;
 
@@ -21,5 +22,14 @@ public abstract class SqlProcessor {
 	
 	protected abstract <T> void updateParam(Object aQuery, T aObj, Map<String,Object> tmpFieldMap);
 	public abstract <T> Object execute(Object aCon, T aObj);
+	
+	public <T> Object getResult(Object aCon, T aObj){
+		return this.execute(aCon, aObj);
+	}
+	
+	public <T> List<T> getResultAsList(Object aCon, T aObj){
+//		System.out.println("aJPF.getActionType(): " + aJPF.getActionType().name());
+		return (List<T>)this.execute(aCon, aObj);
+	}
 	
 }
