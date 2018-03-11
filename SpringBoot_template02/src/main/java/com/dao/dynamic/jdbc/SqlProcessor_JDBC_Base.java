@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -43,7 +44,7 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 			String sql = super.sqlProvider.getSql(aObj, tmpFieldMap);
 			System.out.println(super.sqlProvider.getClass().getSimpleName() + " sql_result: " + sql);
 			/** 建立Query物件 **/
-			PreparedStatement query = ((Connection)aCon).prepareStatement(sql.toString());
+			PreparedStatement query = ((Connection)aCon).prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
 			/** 更新Query參數 **/
 			this.updateParam(query, aObj, tmpFieldMap);
 			/** 執行 **/
@@ -102,9 +103,16 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 				System.out.println("tblSystemMonitor_list.size(): " + resultList.size());
 				result = resultList;
 				break;
-//		case C:
-//			result = query.executeUpdate().getKey(); // pk值
-//			break;
+		case C:
+			query.executeUpdate();
+			ResultSet rs_c = query.getGeneratedKeys(); // pk值
+//			ResultSet rs = pInsertOid.getGeneratedKeys();
+			if (rs_c.next()) {
+			  int newId = rs_c.getInt(1);
+			  result = newId;
+//			  oid.setId(newId);
+			}
+			break;
 //		case U:
 //		case D:
 //			result = query.executeUpdate().getResult(); // 更新比數

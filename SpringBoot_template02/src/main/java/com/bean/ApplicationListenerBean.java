@@ -43,12 +43,18 @@ public class ApplicationListenerBean implements ApplicationListener {
     		tblSystemMonitor.setStatus("23");
     		
     		Assembler_JDBC myJPF_JDBCDao = new Assembler_JDBC();
-    		// jdbd - findAll 
+    		
+    		// jdbc - findAll 
     		SqlProcessor jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.R);
     		Object con = myJPF_JDBCDao.getCon();
     		List<tblSystemMonitor> resultAsList = myJPF_JDBCDao.getResultAsList(con, tblSystemMonitor, jpf);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_findAll: " + resultAsList);
    		
+    		// jdbc - insert
+    		tblSystemMonitor.setStatus("25");
+    		jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.C);
+    		result = myJPF_JDBCDao.getResult(con, tblSystemMonitor, jpf);
+    		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_insert: " + result);
     		
     		
      		
