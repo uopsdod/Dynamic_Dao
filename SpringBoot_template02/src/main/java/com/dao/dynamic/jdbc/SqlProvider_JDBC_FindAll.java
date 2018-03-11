@@ -7,12 +7,12 @@ import java.util.Date;
 import java.util.Map;
 
 // SELF
+import com.dao.annotation.FieldNotForDaoSql;
+import com.dao.dynamic.SqlProvider;
 
 // THIRD PARTY
 import org.apache.logging.log4j.util.Strings;
 
-import com.dao.annotation.FieldNotForDaoSql;
-import com.dao.dynamic.SqlProvider;
 
 
 public class SqlProvider_JDBC_FindAll extends SqlProvider{

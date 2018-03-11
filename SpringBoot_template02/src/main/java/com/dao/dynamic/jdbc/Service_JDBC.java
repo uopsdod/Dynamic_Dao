@@ -1,9 +1,9 @@
 package com.dao.dynamic.jdbc;
 
+// THIRD PARTY
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import org.sql2o.Sql2o;
 
 @Component
 public class Service_JDBC {

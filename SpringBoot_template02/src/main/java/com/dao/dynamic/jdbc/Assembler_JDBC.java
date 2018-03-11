@@ -7,9 +7,6 @@ package com.dao.dynamic.jdbc;
 import com.dao.dynamic.Assembler;
 
 // THIRD PARTY
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 
 /**
  * ( 這邊就是客戶端了，各自去用 ，已非開發設計者的責任範圍)

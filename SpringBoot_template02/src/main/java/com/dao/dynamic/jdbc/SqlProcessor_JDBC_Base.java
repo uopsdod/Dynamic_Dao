@@ -1,29 +1,25 @@
 package com.dao.dynamic.jdbc;
 
-
+//JAVA
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-// JAVA
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.bean.tblSystemMonitor;
-
 // SELF
-
-// THIRD PARTY
 import com.dao.dynamic.SqlProcessor;
 import com.dao.dynamic.SqlProvider;
+
+// THIRD PARTY
 
 
 public class SqlProcessor_JDBC_Base extends SqlProcessor{
