@@ -6,11 +6,10 @@ package com.dao.dynamic.jdbc;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+// SELF
 import com.dao.annotation.FieldNotForDaoSql;
 import com.dao.annotation.PrimaryKey;
 import com.dao.dynamic.SqlProvider;
-
-// SELF
 
 public class SqlProvider_JDBC_Insert extends SqlProvider{
 

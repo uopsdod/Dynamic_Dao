@@ -7,12 +7,10 @@ import java.lang.reflect.Field;
 import java.util.Map;
 
 // SELF
-
-// THIRD PARTY
-import org.apache.logging.log4j.util.Strings;
-
 import com.dao.annotation.PrimaryKey;
 import com.dao.dynamic.SqlProvider;
+
+// THIRD PARTY
 
 public class SqlProvider_JDBC_Update extends SqlProvider{
 
@@ -63,7 +61,7 @@ public class SqlProvider_JDBC_Update extends SqlProvider{
 			// 放入pkey資訊(要放入最後一個，因為WHERE在最後面)
 			aTmpFieldMap.put(pKeyFieldName, pKeyFObj);
 			
-			if (Strings.isBlank(sql_update_where.toString())){
+			if (sql_update_where.toString() == null || sql_update_where.toString().isEmpty()){
 				throw new RuntimeException("WHERE語句為空  請提供搜尋條件");
 			}
 			

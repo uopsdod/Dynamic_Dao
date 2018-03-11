@@ -4,22 +4,22 @@ package com.dao.dynamic.jdbc;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
 
 // SELF
 import com.dao.dynamic.ConProvider;
 
 // THIRD PARTY
-import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ConProvider_JDBC extends ConProvider{
-    private final JdbcTemplate jdbcTemplate = Service_JDBC.getJDBCTemplte();
+    private final DataSource ds = Service_JDBC.getJDBCTemplte().getDataSource();
     public ConProvider_JDBC() {}
 	
 	@Override
 	protected Object getCon() {
 		Connection connection = null;
 		try {
-			connection = this.jdbcTemplate.getDataSource().getConnection();
+			connection = this.ds.getConnection();
 			return connection;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -31,7 +31,7 @@ public class ConProvider_JDBC extends ConProvider{
 	public Object getTxCon() {
 		Connection connection = null;
 		try {
-			connection = this.jdbcTemplate.getDataSource().getConnection();
+			connection = this.ds.getConnection();
 			return connection;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

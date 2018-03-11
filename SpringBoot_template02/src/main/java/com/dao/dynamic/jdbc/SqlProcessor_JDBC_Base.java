@@ -54,10 +54,6 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 				ResultSet rs = query.executeQuery();
 				ResultSetMetaData rsmd = rs.getMetaData();
 				List<T> resultList = new ArrayList<>();
-				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-					String name = rsmd.getColumnName(i);
-					System.out.println("rs_name: " + name);
-				}
 				System.out.println("rs.getFetchSize(): " + rs.getFetchSize());
 				try {	
 					// 拿取原物件class
@@ -89,7 +85,7 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 								System.out.println("String type");
 								String val = rs.getString("status");
 								f.set(instance, val);
-							} // 請在持續往下
+							} // 請在持續往下+
 							System.out.println("end this round ****************");
 						} // end of for
 						
