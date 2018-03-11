@@ -36,7 +36,7 @@ public class Assembler_JDBC extends Assembler{
 		this.SqlProcessor_map.put(ACTION_JDBC.R, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_FindAll()));
 		this.SqlProcessor_map.put(ACTION_JDBC.C, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_Insert()));
 		this.SqlProcessor_map.put(ACTION_JDBC.U, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_Update()));
-//		this.SqlProcessor_map.put(ACTION_JDBC.D, new SqlProcessor_JDBC_Base(new SqlProvider_Sql2o_Delete()));
+		this.SqlProcessor_map.put(ACTION_JDBC.D, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_Delete()));
 	}
 	
 //	public <T> List<T> findAllByDate(T aObj, String aStarttime, String aEndtime) {
