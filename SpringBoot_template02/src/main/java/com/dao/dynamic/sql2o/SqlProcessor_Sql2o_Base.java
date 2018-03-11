@@ -13,6 +13,7 @@ import org.sql2o.Query;
 
 import com.dao.dynamic.SqlProcessor;
 import com.dao.dynamic.SqlProvider;
+import com.dao.dynamic.jdbc.ConProvider_JDBC;
 
 import org.sql2o.Connection;
 
@@ -25,6 +26,7 @@ public class SqlProcessor_Sql2o_Base extends SqlProcessor{
 	
 	public SqlProcessor_Sql2o_Base(SqlProvider aSqlProvider) {
 		super.sqlProvider = aSqlProvider;
+		super.conProvider = new ConProvider_JDBC();
 	}
 	
 //	Sql2OService

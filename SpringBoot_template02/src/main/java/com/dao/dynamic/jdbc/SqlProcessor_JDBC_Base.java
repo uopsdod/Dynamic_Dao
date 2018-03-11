@@ -31,6 +31,7 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 	
 	public SqlProcessor_JDBC_Base(SqlProvider aSqlProvider) {
 		super.sqlProvider = aSqlProvider;
+		super.conProvider = new ConProvider_JDBC();
 	}
 	
 //	Sql2OService
@@ -79,11 +80,11 @@ public class SqlProcessor_JDBC_Base extends SqlProcessor{
 							System.out.println("f.getType(): " + f.getType().getSimpleName());
 							if (Integer.class.isAssignableFrom(f.getType())) {
 								System.out.println("Integer type");
-								Integer val = rs.getInt("status");
+								Integer val = rs.getInt(name);
 								f.set(instance, val);
 							}else if (String.class.isAssignableFrom(f.getType())) {
 								System.out.println("String type");
-								String val = rs.getString("status");
+								String val = rs.getString(name);
 								f.set(instance, val);
 							} // 請在持續往下+
 							System.out.println("end this round ****************");

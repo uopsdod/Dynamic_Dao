@@ -14,6 +14,7 @@ import java.util.Map;
 public abstract class SqlProcessor {
 	
 	protected SqlProvider sqlProvider;
+	protected ConProvider conProvider;
 	
 //	protected Map<Object,JPF> JSP_map = new HashMap<>(); // 讓使用者動態新增
 //	protected abstract Object getTxCon();
@@ -27,9 +28,24 @@ public abstract class SqlProcessor {
 		return this.execute(aCon, aObj);
 	}
 	
+	public <T> Object getResult(T aObj){
+		return this.execute(this.conProvider.getCon(), aObj);
+	}
+	
 	public <T> List<T> getResultAsList(Object aCon, T aObj){
 //		System.out.println("aJPF.getActionType(): " + aJPF.getActionType().name());
 		return (List<T>)this.execute(aCon, aObj);
 	}
+	
+	public <T> List<T> getResultAsList(T aObj){
+//		System.out.println("aJPF.getActionType(): " + aJPF.getActionType().name());
+		return (List<T>)this.execute(this.conProvider.getCon(), aObj);
+	}
+	public Object getTxCon() {
+		return this.conProvider.getTxCon();
+	}
+	public Object getCon() {
+		return this.conProvider.getCon();
+	}	
 	
 }

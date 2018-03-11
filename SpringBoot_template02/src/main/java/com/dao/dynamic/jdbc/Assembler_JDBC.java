@@ -23,7 +23,7 @@ public class Assembler_JDBC extends Assembler{
 	
     public Assembler_JDBC() {
     	super(new ConProvider_JDBC());
-		this.load();
+		this.register();
     }
 	
 //	public Assembler_JDBC() {
@@ -31,8 +31,11 @@ public class Assembler_JDBC extends Assembler{
 //		super(new ConProvider_JDBC());
 //		this.load();
 //	}
-
-	private void load() {
+    
+    /** 
+     * 註冊概念
+     */
+	private void register() {
 		this.SqlProcessor_map.put(ACTION_JDBC.R, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_FindAll()));
 		this.SqlProcessor_map.put(ACTION_JDBC.C, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_Insert()));
 		this.SqlProcessor_map.put(ACTION_JDBC.U, new SqlProcessor_JDBC_Base(new SqlProvider_JDBC_Update()));

@@ -40,7 +40,7 @@ public class Assembler_Sql2o extends Assembler{
 //		myJPF_Sql2oDao.getInfo360Dao().getJPF_Map().put(JPF_Sql2oFindAllWithDate.class.getSimpleName(), myJPF_Sql2oFindAllWithDate);
 //		JPF_Sql2oFindAllWithDate jpf_r_date = (JPF_Sql2oFindAllWithDate)myJPF_Sql2oDao.getInfo360Dao().getJPF_Map().get(JPF_Sql2oFindAllWithDate.class.getSimpleName());
 //		System.out.println("myJPF_Sql2oFindAllWithDate.getActionType(): " + myJPF_Sql2oFindAllWithDate.getActionType());
-		List<T> result = jpf_Sql2oBase.getResultAsList(this.getCon(), aObj);
+		List<T> result = jpf_Sql2oBase.getResultAsList(jpf_Sql2oBase.getCon(), aObj);
 //		Util.getConsoleLogger().info("findAllByDate() result_findAll_date: " + result);
 		return (List<T>)result;
 	}

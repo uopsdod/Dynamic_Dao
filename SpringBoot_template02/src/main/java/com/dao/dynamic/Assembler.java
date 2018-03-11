@@ -13,7 +13,6 @@ import java.util.Map;
 public class Assembler {
 	
 //	private JPF jpf;
-	private ConProvider conProvider;
 	protected Map<Object,SqlProcessor> SqlProcessor_map = new HashMap<>(); // 讓使用者動態新增
 	
 //	private static Sql2o sql2oForAll = Sql2OService.getSQL2OInstance();
@@ -23,15 +22,15 @@ public class Assembler {
 	public Assembler(ConProvider conProvider) {
 		super();
 //		this.jpf = javaPersistenFramwork;
-		this.conProvider = conProvider;
+//		this.conProvider = conProvider;
 	}
-
-	public Object getTxCon() {
-		return this.conProvider.getTxCon();
-	}
-	public Object getCon() {
-		return this.conProvider.getCon();
-	}
+//
+//	public Object getTxCon() {
+//		return this.conProvider.getTxCon();
+//	}
+//	public Object getCon() {
+//		return this.conProvider.getCon();
+//	}
 
 //	public <T> Object getResult(Object aCon, T aObj, JPF aJPF){
 //		Object result = null; 

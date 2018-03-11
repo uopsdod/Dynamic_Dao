@@ -46,7 +46,7 @@ public class ApplicationListenerBean implements ApplicationListener {
     		
     		// jdbc - findAll 
     		SqlProcessor jpf = myJPF_JDBCDao.getSqlProcessor_map().get(ACTION_JDBC.R);
-    		Object con = myJPF_JDBCDao.getCon();
+    		Object con = jpf.getCon();
     		List<tblSystemMonitor> resultAsList = jpf.getResultAsList(con, tblSystemMonitor);
     		Util.getConsoleLogger().info("contextInitialized() tblSystemMonitor_result_findAll: " + resultAsList);
    		
